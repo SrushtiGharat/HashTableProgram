@@ -25,7 +25,9 @@ namespace HashTableProgram
                 }
             }
 
-            Console.WriteLine("Frequency :"+hash.GetFrequency("are"));
+            Console.WriteLine("Frequency :"+hash.GetFrequency("avoidable"));
+            hash.Remove("avoidable");
+            Console.WriteLine("Frequency after removing :" + hash.GetFrequency("avoidable"));
 
 
         }
