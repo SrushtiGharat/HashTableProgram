@@ -42,8 +42,12 @@ namespace HashTableProgram
                 linkedList.Remove(foundItem);
             }
         }
-
-        public V Get(K key)
+        public void Set(K key, V value)
+        {
+            Remove(key);
+            Add(key, value);
+        }
+        public V GetFrequency(K key)
         {
             int position = GetArrayPosition(key);
             LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
