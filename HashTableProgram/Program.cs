@@ -21,7 +21,7 @@ namespace HashTableProgram
                 else
                 {
                     frequency = hash.GetFrequency(words[i]);
-                    hash.Set(words[i], ++frequency);
+                    hash.SetFrequency(words[i], ++frequency);
                 }
             }
 

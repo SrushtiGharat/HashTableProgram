@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Text;
 
 namespace HashTableProgram
@@ -42,10 +43,26 @@ namespace HashTableProgram
                 linkedList.Remove(foundItem);
             }
         }
-        public void Set(K key, V value)
+        public KeyValue<K, V> GetItem(K key)
         {
-            Remove(key);
-            Add(key, value);
+            int position = GetArrayPosition(key);
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
+            foreach (var item in linkedList)
+            {
+                if (item.Key.Equals(key))
+                    return item;
+            }
+            return default;
+        }
+        public void SetFrequency(K key, V value)
+        {
+            int position = GetArrayPosition(key);
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
+
+            KeyValue<K, V> newItem = new KeyValue<K, V>() { Key = key, Value = value };
+            KeyValue<K, V> item = GetItem(key);
+            
+            linkedList.Find(item).Value= newItem;
         }
         public V GetFrequency(K key)
         {
